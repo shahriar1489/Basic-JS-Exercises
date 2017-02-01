@@ -11,15 +11,16 @@ Output:
 742.4
 
  --------------------------- */
-
 function percentage(number, percentage) {
-  return "No code yet";
+    return number * percentage / 100;;
+//  return "No code yet";
 }
+
 console.log("Percentage Calculator:");
 /* Uncomment the following to check */
-  // console.log(percentage(2000, 37.12));
-  // console.log(percentage(450, 56.5));
-  // console.log(percentage(5230, 34));
+   console.log(percentage(2000, 37.12));
+   console.log(percentage(450, 56.5));
+   console.log(percentage(5230, 34));
 
 
 
@@ -44,16 +45,24 @@ HINT: Use substring()
  --------------------------- */
 
 function rotate_string(text) {
+
+  var i, temp, str;
+
+  console.log(text);  // the first one : cat
+
+  for(i = 0; i < text.length; i++)
+  {
+    text = text[text.length-1] + text.substring(0, text.length-1);  // notice this line
+    console.log(text);
+  }
+
   console.log(text);
 }
 
 console.log("Rotate String:");
 /* Uncomment the following to check */
-  //rotate_string("cat");
-  //rotate_string("voracious")
-
-
-
+  rotate_string("cat");
+  rotate_string("voracious")
 
 /* ---------------------------
 
@@ -72,12 +81,27 @@ HINT: Use indexOf() and slice()
  --------------------------- */
 
 function remove_first_occurrence(text, searchstring) {
-  return "edited text";
+//  return "edited text";
+    var str;
+
+    for(var i = 0; i < text.length; i++)
+    {
+
+
+        console.log("line 91: " + text.charAt(i));
+        if( text.charAt(i) == searchstring.charAt(0) && text.charAt(i + searchstring.length) == " ")  // incomplete condiiton
+        {
+            // remove
+            str = text.slice(0, i) + text.slice(i+searchstring.length,  text.length);   // all before 'the'  +
+        }
+    }
+
+    return str;
 }
 
 console.log("Remove First Occurrence:");
 /* Uncomment the following to check */
-  //console.log(remove_first_occurrence("The quick brown fox jumps over the lazy dog", 'the'));
+  console.log(remove_first_occurrence("The quick brown fox jumps over the lazy dog", 'the'));
 
 
 

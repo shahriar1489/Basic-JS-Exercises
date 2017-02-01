@@ -92,7 +92,7 @@ function remove_first_occurrence(text, searchstring) {
         if( text.charAt(i) == searchstring.charAt(0) && text.charAt(i + searchstring.length) == " ")  // incomplete condiiton
         {
             // remove
-            str = text.slice(0, i) + text.slice(i+searchstring.length,  text.length);   // all before 'the'  +
+            str = text.slice(0, i-1) + text.slice(i+searchstring.length,  text.length);   // all before 'the'  +
         }
     }
 

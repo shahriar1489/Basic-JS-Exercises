@@ -88,7 +88,7 @@ function remove_first_occurrence(text, searchstring) {
     {
 
 
-        console.log("line 91: " + text.charAt(i));
+      //  console.log("line 91: " + text.charAt(i));
         if( text.charAt(i) == searchstring.charAt(0) && text.charAt(i + searchstring.length) == " ")  // incomplete condiiton
         {
             // remove

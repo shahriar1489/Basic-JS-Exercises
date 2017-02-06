@@ -121,16 +121,25 @@ abeemrstw
 HINT: Use join(), split() and sort() fucntions
  --------------------------- */
 
-function alphabetic_order(word) {
-  return "rearranged word";
-}
 
-console.log("Alphabetic Order:");
-/* Uncomment the following to check */
-  // console.log(alphabetic_order("webmaster"));
+    function alphabetic_order(word) {
+      var arr = word.split("");   // split the string at each characters
+      //console.log(arr.length);
+      arr.sort();
+      //for(var i = 0; i < res.length; i++)
+      //{
+      //  console.log(i + " " + res[i] );
+      //}
 
+      var str = arr.join();  // 5:33 check this function
+      for(var i =  0; i < str.length; i++)
+         str = str.replace(',' , '');
+      return str;
+    }
 
-
+    console.log("Alphabetic Order:");
+    ///* Uncomment the following to check */
+    console.log(alphabetic_order("webmaster"));
 
 /* ---------------------------
 
@@ -146,15 +155,49 @@ a occurs 5 times
 
  --------------------------- */
 
-function most_frequent(arr) {
-  console.log("Most frequently occuring item in arr");
-}
+ function most_frequent(arr) {
+   console.log("Most frequently occuring item in arr");
 
-console.log("Most Frequent Item:");
-/* Uncomment the following to check */
-  // most_frequent([3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3]);
+   var counter = 0, new_count, max_index, visit = [];
 
+   for(var i = 0; i < arr.length; i++)
+     visit.push(false);
+ 
 
+   for(var i = 0; i < arr.length; i++)
+   {
+
+     if(visit[i] == false)
+     {
+       new_count = 1; // first case we meet
+       visit[i] = true;
+
+       for(var j = i+1; j < arr.length; j++)
+       {
+
+         if(arr[j] === arr[i]) // notice this line
+         {
+           new_count++;  // increase upon match
+           visit[j] = true;
+         }
+       }
+
+       if(new_count > counter)
+       {
+         counter = new_count;
+         max_index = i;
+       }
+     }
+   }
+
+    console.log(arr[max_index] + " occurs " + counter + " times");
+ }
+
+ console.log("Most Frequent Item:");
+
+ /* Uncomment the following to check */
+     most_frequent([3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3]);
+ //*/
 
 
 /* ---------------------------
@@ -188,13 +231,35 @@ Output:
 
  --------------------------- */
 
-function fizzbuzz(n) {
-  console.log("Print the Fizz, Buzz and FizzBuzz numbers in 1 to n");
-}
+ function fizzbuzz(n) {
 
-console.log("FizzBuzz:");
-/* Uncomment the following to check */
-  // fizzbuzz(100);
+   for(i = 0; i <= n; i++)
+   {
+       if((i % 3 == 0) && (i%5 != 0))
+       {
+         console.log(i + " Fizz");
+       }
+
+       else if(i % 5 == 0 && (i%3 != 0))
+       {
+         console.log(i + " Buzz");
+       }
+
+       else if(i % 15 == 0)
+       {
+         console.log(i + " FizzBuzz");
+       }
+
+       else
+       {
+         console.log(i);
+       }
+   }
+   //console.log("Print the Fizz, Buzz and FizzBuzz numbers in 1 to n");
+ }
+ console.log("FizzBuzz:");
+ /* Uncomment the following to check */
+  fizzbuzz(100);
 
 
 
@@ -211,13 +276,34 @@ HINT: Use Math.ceil() and Math.random()
 
  --------------------------- */
 
-function guessing_game(guess) {
-  // Get a random integer from 1 to 10 inclusive
-  console.log("matched or unmatched?");
-}
+ function guessing_game(guess)  // no display
+ {
 
-console.log("Guessing Game:");
-/* Uncomment the following to check */
-  // var guess = prompt('Guess the number between 1 and 10 inclusive');
-  // console.log("User guessed: "+ guess);
-  // guessing_game(guess);
+   // Get a random integer from 1 to 10 inclusive
+   console.log("matched or unmatched?");
+   var match, num;
+
+   //for(var i = 0; i <= 10000; i++)
+   //{
+     num = Math.random() * 100;  // Math.random() return a random number between 0 and 1
+     num = Math.ceil(num);  // used floor thus getting 1 among 10000 samples
+     num = (num % 10) + 1; // to generate number between 1 and 10
+     console.log("at i = " + i + ", num = " + num);
+   //}
+
+   if(guess === num)
+   {
+     return("Good Work");
+   }
+
+   else
+   {
+     return("Not matched");
+   }
+
+ }
+  console.log("Guessing Game:");
+ /* Uncomment the following to check */
+    var guess = prompt('Guess the number between 1 and 10 inclusive');
+    console.log("User guessed: "+ guess);
+    guessing_game(guess);
